@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HolaMundo</string>
+    <string name="hello_world">Hola Mundo!</string>
+    <string name="show_message">Muestra el Mensaje</string>
+    <string name="hide_message">Ocultar el Mensaje</string>
+    <string name="score">Puntuación</string>
+    <string name="action_settings">Ajustes</string>
+
+</resources>
