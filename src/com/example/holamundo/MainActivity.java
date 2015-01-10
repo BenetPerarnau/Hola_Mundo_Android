@@ -2,6 +2,7 @@ package com.example.holamundo;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,15 +14,18 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
-public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener, RatingBar.OnRatingBarChangeListener{
+public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener, 
+											RatingBar.OnRatingBarChangeListener{
 	
 	RelativeLayout pant=null;
 	SeekBar barra=null;
 	RatingBar estrellas=null;
 	TextView punts=null;
 	ImageView marco=null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,8 +39,9 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		
 		marco=(ImageView) findViewById(R.id.marco);
 		
+		
 		barra=(SeekBar) findViewById(R.id.seekBar1);
-		barra.setBackgroundColor(Color.RED);
+		//barra.setBackgroundColor(Color.RED);
 		barra.setOnSeekBarChangeListener(this);
 		
 		final Button miboton=(Button) findViewById(R.id.button);
@@ -52,7 +57,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 				if(label.getText().length()>0){
 					
 					label.setText("");
-					miboton.setBackgroundColor(Color.GRAY);
+					//miboton.setBackgroundColor(Color.GRAY);
 					miboton.setText(R.string.show_message);
 					
 				}
@@ -60,7 +65,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 					
 					label.setText(R.string.hello_world);
 					miboton.setText(R.string.hide_message);
-					miboton.setBackgroundColor(Color.RED);
+					//miboton.setBackgroundColor(Color.RED);
 				}
 			}
 		});
@@ -118,8 +123,11 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		punts.setText(R.string.score);
 		punts.setText(punts.getText()+" "+rating);
 		
+		
+		
 		if(rating==0 || rating<1){
 			marco.setImageResource(R.drawable.img0);
+			marco.refreshDrawableState();
 		}else if(rating==1 || rating<2){
 			marco.setImageResource(R.drawable.img1);
 		}else if(rating==2 || rating<3){
@@ -131,7 +139,39 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		}else if(rating==5){
 			marco.setImageResource(R.drawable.img5);
 		}
+		new Thread(new Runnable() {
+		    public void run() {
+		      
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+		 
+		    runOnUiThread(new Runnable() {
+		        public void run() {
+		            Toast.makeText(MainActivity.this, "Grácias por puntuar!",
+		                Toast.LENGTH_SHORT).show();
+		            borrarImagen();
+		        }
+		       
+		    });
+		    }
+		}).start();
+
+		
 		
 		
 	}
+	public void borrarImagen(){
+
+		marco.setImageResource(0);
+	}
+
+
+
+	
+
 }
