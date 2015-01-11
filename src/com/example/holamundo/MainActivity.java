@@ -109,7 +109,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		// cuando dejamos de moverla
+		// cuando dejamos de moverla.
 		
 	}
 	/////////////////////////////////////////////////////////
