@@ -152,7 +152,7 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 		 
 		    runOnUiThread(new Runnable() {
 		        public void run() {
-		            Toast.makeText(MainActivity.this, "Grácias por puntuar!",
+		            Toast.makeText(MainActivity.this, R.string.thanks,
 		                Toast.LENGTH_SHORT).show();
 		            borrarImagen();
 		        }

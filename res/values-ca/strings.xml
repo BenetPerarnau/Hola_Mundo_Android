@@ -7,5 +7,6 @@
     <string name="hide_message">Ocultar el Missatge</string>
     <string name="score">Puntuació</string>
     <string name="action_settings">Ajustos</string>
+     <string name="thanks">Gràcies per puntuar</string>
 
 </resources>
